@@ -1,15 +1,14 @@
-class Person
-  def initialize(age, parent_permision: true, name: 'Unknown')
+require './decorator'
+
+class Person < Nemeable
+  attr_accessor :name, :age, :id, :parent_permission
+
+  def initialize(age, parent_permision: true, name: 'maximilianus', id: Random.rand(1..1000))
+    super()
     @id = id
     @age = age
     @name = name
     @parent_permision = parent_permision
-  end
-
-  private
-
-  def of_age?
-    @age > 18
   end
 
   public
@@ -18,6 +17,13 @@ class Person
     of_age? && @parent_permision
   end
 
-  attr_accessor :name, :age
-  attr_reader :id
+  def correct_name
+    @name
+  end
+
+  private
+
+  def of_age?
+    @age > 18
+  end
 end
