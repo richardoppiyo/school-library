@@ -1,7 +1,6 @@
 require './decorator'
 require './rental'
 
-
 class Person < Nemeable
   attr_accessor :name, :age, :id, :parent_permission, :rentals
 
