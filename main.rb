@@ -19,7 +19,7 @@ class Main
     selected_option = app.select_opt
     break if selected_option == 7
   end
-  puts 'Thanks for using this App!! ✨'
+  puts 'Thanks for using this App!!'
 end
 
 Main

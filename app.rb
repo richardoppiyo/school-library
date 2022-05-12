@@ -50,17 +50,43 @@ class App
     puts 'Book created successfully'
   end
 
-  def create_person
-    print 'Enter 1 to create a student and 2 a teacher:'
-    num = gets.chomp
-    print 'Enter their age:'
-    age = gets.chomp
-    print 'Name:'
-    name = gets.chomp
+  def check_number(msg)
+    number = 0
+    loop do
+      print msg
+      input = gets.chomp.to_i
+      if input.is_a?(Integer) && input.positive?
+        number = input
+        break
+      else
+        puts 'Please, enter a valid input!'
+      end
+    end
+    number
+  end
 
+  def check_options(msg, options)
+    number = 0
+    loop do
+      print msg
+      input = gets.chomp.to_i
+      if options.include?(input)
+        number = input
+        break
+      else
+        puts 'Please, enter a valid input!'
+      end
+    end
+    number
+  end
+
+  def create_person
+    num = check_options('Do you want to create a student (1) or a teacher (2)? [input the number]: ', [1, 2])
+    age = check_number('Age:')
+    name = gets.chomp
     case num
     when 1
-      print 'Do they have parent\'s permission? [y/n]:'
+      print 'Has parent permission? [y/n]:'
       parent_permission = gets.chomp
       case parent_permission
       when 'y' then parent_permission = true
@@ -68,7 +94,7 @@ class App
       end
       @person.push(Student.new(age, name, parent_permission: parent_permission))
     when 2
-      print 'Enter the teacher\'s specialization:'
+      print 'Specialization:'
       specialization = gets.chomp
       @person.push(Teacher.new(age, specialization, name))
     else
