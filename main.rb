@@ -1,4 +1,4 @@
-require './app'
+require_relative './app'
 
 def print_question
   puts "Please choose an option by enterin a number:
@@ -11,15 +11,15 @@ def print_question
     7- Exit."
 end
 
-class Main
+def main
   app = App.new
-  puts 'Welcome to School library Application!'
+  puts 'Welcome to School library App! 🎉'
   loop do
     print_question
     selected_option = app.select_opt
     break if selected_option == 7
   end
-  puts 'Thanks for using this App!!'
+  puts 'Thanks for using this App!! ✨'
 end
 
-Main
+main
